@@ -1,2 +1,2 @@
 # HackUSF
-hakathon
+hackathon
