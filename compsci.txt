@@ -1,0 +1,309 @@
+COMPUTER SCIENCE (BSCS)
+Learn design, development, and application of software systems and the theory of computation.
+
+Curriculum Guide
+Flowchart
+Apply for Admission
+Computer Science and Engineering Department 
+
+This semester plan is provided as a guide; the catalog is the definitive source of requirements. 7/31/2024
+Computer Science B.S.C.S.
+120 credits, 2024/2025 Catalog
+First Year
+Fall Semester Spring Semester
+4 MAC 2281 or MAC 2311 Calculus I 4 MAC 2282 or MAC 2312 Calculus II
+Apply for Progression
+to Upper Division end of
+Spring semester
+3 ENC 1101 Composition I 3 PHY 2048 General Physics I
+R EGN 3000 Foundations of Engineering 1 PHY 2048L General Physics I Lab
+3 EGN 3000L Foundations of Eng. Lab (TGEC) 3 ENC 1102 Composition II
+3 Gen. Ed. Natural Science Elective 3 *COP 2510 Programming Concepts
+13 Total Credits 14 Total Credits
+Second Year
+Fall Semester Spring Semester Summer
+3 COT 3100 Intro Discrete Structures 3 COP 4530 Data Structures 3 ** St. Gen. Ed. Core
+3 PHY 2049 General Physics II 3 CDA 3201 Logic Design Social Science Elective
+1 PHY 2049L General Physics II Lab 1 CDA 3201L Logic Design Lab 3 Gen. Ed. Natural Science
+3 *COP 3514 Program Design 3 St. Gen. Ed. Core Humanities Elective Elective
+3 *CDA 3103 Computer Organization 4 **General Elective 3 EGN 3443 Probability &
+ Statistics for Eng (TGEI)
+13 Total Credits 14 Total Credits 9 Total Credits
+Third Year
+Fall Semester Spring Semester Summer
+3 CDA 4205 Computer Architecture 3 COT 4400 Analysis of Algorithms Recommended
+1 CDA 4205L Computer Architecture Lab 3 ENC 3246 Comm. for Engineers Internship/Co-op
+2 EGN 4450 Linear Systems 3 CSE Software Elective Company/employer
+3 Gen. Ed. Human & Cultural Diversity Elective 3 CSE Elective name and position
+3 CSE Software Elective 3 ** General Elective (see advisor for credit
+3 ** General Elective Options – CIS 4940)
+15 Total Credits 15 Total Credits
+Fourth Year
+Fall Semester Spring Semester
+3 CNT 4419 Secure Coding 3 CIS 4250 Ethical Issues & Professional Conduct
+3 COP 4600 Operating Systems (TGEE)
+3 CSE Theory Elective 3 CEN 4020 Software Engineering (TGEH)
+3 CSE Elective 3 CSE Elective
+3 ** General Elective 3 ** General Elective
+! Apply for Graduation
+15 Total Credits 12 Total Credits
+Notes: Courses in bold must be completed with a competitive GPA, see overleaf for details.
+R - Required course. * - Requires a minimum grade of a “B”, “B-“ is insufficient.
+** Students must meet the Civics req. with credit for AMH 2010 (fall 2024 or later), AMH 2020, or POS 2041 and passing the FL Civics Literacy Exam
+TGEC = Gen Ed Creative Thinking, TGEI = Gen Ed Information & Data Literacy, TGED = Gen Ed Human & Cultural Diversity
+TGEE = Gen Ed Ethical Reasoning & Civic Engagement, TGEH = Gen Ed High Impact Practice Capstone
+Computer Science Requirements for Progression to Upper Division
+1. Completion of the following courses with a minimum grade of C and a cumulative 3.60 GPA* (based on
+best attempt) for the following courses:
+Calculus I or Engineering Calculus I (MAC 2311 or MAC 2281)
+Calculus II or Engineering Calculus II (MAC 2312 or MAC 2282)
+Physics I with lab (PHY 2048 and 2048L)
+* Minimum GPA for entry into the department starting fall 2024 is 3.60. This GPA is subject to change in future
+years; check the department website.
+2. Completion of COP 2510 Programming Concepts with a minimum grade of B (“B-” is insufficient)
+3. A minimum Overall GPA of 2.00
+4. A minimum USF GPA of 2.00
+Continuation and Graduation Requirements
+Reference Catalog: https://catalog.usf.edu/preview_program.php?catoid=21&poid=10330
+• Requires completion of CDA 3103 and COP 3514 with a minimum grade of “B” (a “B-” is insufficient) in each
+course based on best attempt.
+• Unless otherwise stated, the minimum acceptable grade in all BSCS required math, science, and engineering
+courses is a C or higher (C- is insufficient). The minimum acceptable grade in specialization courses is a C-, except
+as stated in the program admission (progression to the upper division) and continuation requirements.
+• Students must have and maintain a minimum 2.0 Semester GPA, 2.0 Math and Science GPA, 2.0 Engineering
+GPA, 2.0 Specialization GPA, 2.0 USF GPA, and 2.0 Overall GPA.
+• All required math, science, engineering and specialization courses must be successfully completed in no more
+than two registered attempts. Grades of W, IF, U, and R are considered attempts.
+Course Equivalencies
+Courses at USF Courses at a Florida State Institution
+MAC 2281 Engineering Calculus I or MAC 2311 Calculus I MAC X311 or MAC X281
+MAC 2282 Engineering Calculus II or MAC 2312 Calculus II MAC X312 or MAC X282
+MAC 2283 Engineering Calculus III or MAC 2313 Calculus III MAC X313 or MAC X283
+PHY 2048/2048L General Physics I with PHY 2048L PHY X048/X048L or PHY X048C or PHY X043/X048L
+PHY 2049/2049L General Physics II or
+PHY X049/X049L or PHY X049C or PHY X044/X049L
+ PHY 2061 Enriched Physics II with PHY 2049L
+COP 2510 Programming Concepts COP XXXX (Intro Prog C, C++, Java, or equivalent)
+
+
+MAC 2281
+or MAC 2311
+Calculus I
+4 hrs F, S, Su
+EGN 3000
+Foundations of
+Engineering
+Required F, S
+PHY 2048L
+General
+Physics I Lab
+1 hrs F, S, Su
+PHY 2048
+General
+Physics I
+3 hrs F, S, Su
+MAC 2282
+or MAC 2312
+Calculus II
+4 hrs F, S, Su
+PHY 2049L
+General
+Physics II Lab
+1 Hour
+PHY 2049
+General
+Physics II
+3 Hours
+COT 3100
+Discrete
+Structures
+3 hrs F, S, Su
+COP 3514
+Program
+Design
+3 hrs F, S, Su
+COP 4530
+Data Structures
+3 hrs F, S, Su
+CDA 3201L
+Computer Logic
+Design Lab
+1 hr F, S, Su
+CSE Software
+Elective
+3 hrs F, S, Su
+CDA 4205
+Computer
+Architecture
+3 hrs F, S, Su
+CDA 3201
+Computer Logic
+Design
+3 hrs F, S, Su
+COP 2510
+Programming
+Concepts
+3 hrs F, S, Su
+CSE Software
+Elective
+3 hrs F, S, Su
+COP 4600
+Operating
+Systems
+3 hrs F, S
+CIS 4250
+Ethical Issues &
+Prof Conduct
+3 hrs F, S
+CDA 3103
+Computer
+Organization
+3 hrs F, S, Su
+COT 4400
+Analysis of
+Algorithms
+3 hrs F, S, Su
+Natural Science
+Elective
+3 hrs F, S, Su
+CSE Elective
+3 hrs F, S, Su
+CSE Elective
+3 hrs F, S, Su
+EGN 3000L
+Foundations of
+Eng Lab
+(Creative
+Thinking)
+3 hrs F, S
+EGN 3000L
+Foundations of
+Eng Lab
+(Creative
+Thinking)
+3 hrs F, S
+Flowchart Flowchart USF BS in Computer Science (B.S.C.S.) USF BS in Computer Science (B.S.C.S.) 2024-25 Catalog, 120 hours 25 Catalog, 120 hours
+Lower Division Status Upper Division Status
+Year 1 Year 2 Summer Year 3 Year 4
+Fall 13 hrs Spring 14 hrs Fall 13 hrs Spring 14 hrs 9 hrs Fall 15 hrs Spring 15 hrs Fall 15 hrs Spring 12 hrs
+ENC 1101
+Composition I
+3 hrs F, S, Su
+ENC 1102
+Composition II
+3 hrs F, S, Su
+St. GenEd Core
+Social Science
+Elective
+3 hrs F, S, Su
+St. GenEd Core
+Humanities
+Elective
+3 hrs F, S, Su
+ENC 3246
+Communication
+for Engineers
+3 hrs F, S, Su
+Natural Science
+Elective
+3 hrs F, S, Su
+CNT 4419
+Secure Coding
+3 hrs F, S
+CSE Theory
+Elective
+3 hrs F, S, Su
+CEN 4020
+Software
+Engineering
+3 hrs F, S
+Human &
+Cultural
+Diversity
+Elective
+3 hrs F, S, Su
+General
+Elective
+3 hrs F, S, Su
+General
+Elective
+3 hrs F, S, Su
+NOTE: This flow chart is provided as a guide; the catalog is the definitive source of requirements.
+CL CL CL
+Apply for
+Graduation!
+Updated 7/31/2024
+CDA 4205L
+Computer
+Architecture
+1 hr F, S, Su
+General
+Elective
+3 hrs F, S, Su
+CL
+F = Fall S = Spring
+Su = Summer (tentative)
+Pre-requisite
+Pre/Co-requisite
+Co-requisite
+F = Fall S = Spring
+Su = Summer (tentative)
+Pre-requisite
+Pre/Co-requisite
+Co-requisite
+Term & Sequence Progression to the Upper Division Course and Major Notes
+L
+E
+G
+E
+N
+D
+Restricted classes. Must have ULDP.
+Min grade B (not B-) in COP 2510 and a
+minimum grade average (see Dept website) in
+the bold-bordered courses to be eligible for
+Progression to Upper Division.
+Min grade B (not B-) in COP 2510 and a
+minimum grade average (see Dept website) in
+the bold-bordered courses to be eligible for
+Progression to Upper Division. High priority course
+that require a min
+B grade (not B-)
+Max 2 attempts to earn
+required course grade (W,
+IF, U, R count as attempts).
+Course meets Enhanced General
+Education Requirement.
+General Education Notes
+Civic Literacy requirement must be
+met with credit for AMH 2010 (fall
+2024 or later), AMH 2020, or POS
+2041 and passing the Florida Civics
+Literacy exam. CL
+MIN GRADES: Unless otherwise stated,
+min grade in specialization courses is a Cand the min. grade in math, science, and
+engineering courses is C.
+MIN GPA: 2.0 Semester, Engineering,
+Specialization, USF, and Overall
+Apply for
+Upper Division!
+End of Term
+(ULDP)
+EGN 4450
+Linear Systems
+2 hrs F, S, Su
+EGN 3443
+Probability &
+Stats for Eng
+(Info & Data Lit)
+3 hrs F, S, Su
+CSE Elective
+3 hrs F, S, Su
+General
+Elective
+4 hrs F, S, Su
+CL
+General
+Elective
+3 hrs F, S, Su
+CL
