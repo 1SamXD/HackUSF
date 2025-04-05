@@ -7,5 +7,9 @@ which major do you want to ask about
 
 
 
+I want to make an AI chatbot for USF that allows users to be able to sign up and find information for classes/majors easier. I am using a Gemini API key and I already
+webscraped information about classes and their attribuites in a json file. Help me implement an AI chatbot for usf.
+
+
 
 
