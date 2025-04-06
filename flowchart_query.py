@@ -38,7 +38,7 @@ def get_major_courses(major_name, year, semester, flowchart_dir="./flowchart"):
 
 if __name__ == "__main__":
     # Example test: get Year 1 Fall courses for Computer Science
-    major = "computer_"
+    major = "computer_science"
     year = "Year 4"
     semester = "Fall"
     flowchart_dir = "./flowchart"  # <-- use your actual folder name
@@ -54,4 +54,4 @@ if __name__ == "__main__":
         if subj == "N/A" and num == "N/A":
             print(f"{title}")  # Just print the title for electives without subject/course number
         else:
-            print(f"{subj} {num} - {title}")
+            print(f"{subj} {num} - {title}") 
