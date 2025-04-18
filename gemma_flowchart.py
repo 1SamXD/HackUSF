@@ -4,22 +4,24 @@ import subprocess
 import json
 import os
 import re
+#python -m venv test    creates virtual environment 
+#.\test\Scripts\Activate.ps1   activates the virutal environment 
+#pip install langchain langchain_ollama ollama    installs libraries for virtual environment 
+
 
 def start_ollama():
+    """Starts the Ollama server if not already running."""
     try:
-        # Try to see if Ollama is already running
         response = requests.get("http://localhost:11434")
         if response.status_code == 200:
             print("Ollama is already running.")
             return
     except requests.exceptions.ConnectionError:
-        pass  # Not running, so we start it
+        pass
 
-    # Start Ollama as a background process
     print("Starting Ollama...")
     subprocess.Popen(["ollama", "serve"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-    # Wait a few seconds to let it boot up
     for _ in range(10):
         try:
             response = requests.get("http://localhost:11434")
@@ -31,168 +33,152 @@ def start_ollama():
     raise RuntimeError("Failed to start Ollama.")
 
 def query_deepseek(prompt):
+    """Sends a prompt to Ollama model and returns the response."""
     url = "http://localhost:11434/api/generate"
-
     payload = {
-        "model": "gemma3",  # or whatever tag/version you downloaded
+        "model": "gemma3",
         "prompt": prompt,
-        "stream": False # Set to True for streaming responses
+        "stream": False
     }
-
     response = requests.post(url, json=payload)
-
     if response.status_code == 200:
-        result = response.json()
-        return result['response']
-    else:
-        print(f"Error: {response.status_code}")
-        return None
+        return response.json().get("response", "")
+    print(f"Error: {response.status_code}")
+    return None
 
 def extract_json_from_text(text):
-    """Extract JSON from text that might have additional content around it"""
-    # Try to find JSON between curly braces
+    """Attempts to extract JSON from a raw text response."""
     json_pattern = r'\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}'
     match = re.search(json_pattern, text)
-    
     if match:
-        json_str = match.group(0)
         try:
-            return json.loads(json_str)
+            return json.loads(match.group(0))
         except json.JSONDecodeError:
             return None
     return None
 
+def find_matching_sections(flowchart_courses, live_schedule):
+    """Finds available sections in the live schedule that match flowchart courses."""
+    matches = []
+    for course in flowchart_courses:
+        course_subject = course.get("subject", "").upper()
+        course_title = course.get("title", "").lower()
+        for section in live_schedule:
+            section_subject = section.get("subjectDescription", "").split(":")[0].strip().upper()
+            section_title = section.get("courseTitle", "").lower()
+            if course_subject in section_subject and course_title in section_title:
+                matches.append(section)
+    return matches
+
 def get_major_courses(major_name, year, semester, flowchart_dir="./flowchart"):
-    """
-    Load flowchart data for a given major and return subject+courseNumber
-    for a specific year and semester.
-
-    Parameters:
-    - major_name: e.g., "computer_science" make sure it is in a similar format 
-    - year: e.g., "Year 1" 
-    - semester: e.g., "Fall"
-    - flowchart_dir: path to JSON major files
-
-    Returns: List of dictionaries with { subject, courseNumber, title }
-    """
-    # Format the major name (replace spaces with underscores and lowercase)
-    major_name = major_name.lower().replace(" ", "_")
-    
-    file_path = os.path.join(flowchart_dir, f"{major_name}.json")
-
+    """Loads the recommended courses for a major from flowchart data."""
+    file_path = os.path.join(flowchart_dir, f"{major_name.lower().replace(' ', '_')}.json")
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"No flowchart data found for {major_name}")
-
     with open(file_path, "r") as f:
         flowchart = json.load(f)
-
     courses = flowchart.get(year, {}).get(semester, [])
-
-    # Include electives even without subject/courseNumber
-    valid_courses = [
+    return [
         {
-            "subject": c.get("subject", "N/A"),  # Default to 'N/A' if missing
-            "courseNumber": c.get("courseNumber", "N/A"),  # Default to 'N/A' if missing
-            "title": c["title"]
+            "subject": c.get("subject", "N/A"),
+            "courseNumber": c.get("courseNumber", "N/A"),
+            "title": c.get("title", "N/A")
         }
         for c in courses
     ]
 
-    return valid_courses
+def parse_days(day_list):
+    """Parses a list of weekday names into human-readable format."""
+    days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    
+    # Ensure days are in a consistent format (capitalize the first letter)
+    day_list = [day.capitalize() for day in day_list]
+    
+    # Filter days that exist in the list
+    return [day for day in days_of_week if day in day_list]
 
-def process_user_query(user_query):
-    """Process a user query using the LLM and get recommended courses"""
-    
-    extraction_prompt = f"""
+def process_user_query(user_query, live_schedule):
+    """Processes a user's query to extract academic info and return matching course sections."""
+    prompt = f"""
     only respond with the json. do not say your reasoning
-    
+
     Extract the following information from the student query:
     1. Academic year (1st year, 2nd year, 3rd year, 4th year as 1, 2, 3, 4 respectively) -> Integer
     2. Major (whatever they input try to figure out the real name) -> string
     3. Semester (fall, spring, summer) ->string
-    
+
     Query: {user_query}
 
     if no relevant information can be extracted for a specific part, then set that field to null.
 
     Format your response as JSON:
     {{
-      "year": 2,
-      "major": "computer science",
-      "semester": "fall"
+      "year": ,
+      "major": ,
+      "semester":
     }}
-    
-    only respond with the json. do not say anything else or add any additional text.
     """
-    
-    # Get the LLM response
+
     start_ollama()
-    llm_response = query_deepseek(extraction_prompt)
-    
-    # For debugging: print the raw response
+    llm_response = query_deepseek(prompt)
     print(f"\nRaw LLM response:\n{llm_response}\n")
-    
-    # Try to parse the JSON
+
     try:
-        # First try direct parsing
         parsed_info = json.loads(llm_response)
     except json.JSONDecodeError:
-        # If that fails, try to extract JSON from text
         parsed_info = extract_json_from_text(llm_response)
-        
-        if not parsed_info:
-            print("Failed to parse JSON from response")
-            return "Sorry, I couldn't understand the information. Please provide your academic year, major, and the semester you're interested in clearly."
-    
-    # Debug the parsed info
+
+    if not parsed_info:
+        return "Sorry, I couldn't understand the information. Please provide your academic year, major, and the semester you're interested in clearly."
+
     print(f"Parsed info: {parsed_info}")
-    
-    # Convert year to "Year X" format for the flowchart
-    year_num = parsed_info.get("year")
+
+    year = parsed_info.get("year")
     major = parsed_info.get("major")
     semester = parsed_info.get("semester")
-    
-    # Check if we have all required information
-    if not year_num or not major or not semester:
-        missing = []
-        if not year_num: missing.append("year")
-        if not major: missing.append("major")
-        if not semester: missing.append("semester")
-        return f"Missing information: {', '.join(missing)}. Please provide your academic year, major, and semester you're interested in."
-    
-    # Format year for the flowchart lookup
-    year_str = f"Year {year_num}"
-    
-    # Capitalize the first letter of semester
-    semester = semester.capitalize()
-    
-    # Get the courses
+
+    if not year or not major or not semester:
+        missing = [key for key in ["year", "major", "semester"] if not parsed_info.get(key)]
+        return f"Missing information: {', '.join(missing)}. Please provide your academic year, major, and semester."
+
     try:
-        courses = get_major_courses(major, year_str, semester)
-        
-        # Format the response
-        result = f"Recommended courses for {year_str} {semester} semester in {major}:\n\n"
-        
-        for course in courses:
-            subj = course.get("subject", "N/A")
-            num = course.get("courseNumber", "N/A")
-            title = course.get("title", "Untitled")
-            
-            if subj == "N/A" and num == "N/A":
-                result += f"- {title}\n"
-            else:
-                result += f"- {subj} {num} - {title}\n"
-        
+        courses = get_major_courses(major, f"Year {year}", semester.capitalize())
+        matching_sections = find_matching_sections(courses, live_schedule)
+        if not matching_sections:
+            return "I found your recommended courses, but couldn't find any current class sections in the USF registry."
+
+        result = f"Available class sections for Year {year} {semester.capitalize()} in {major}:\n"
+        for sec in matching_sections:
+            days = ", ".join(parse_days(sec.get("days", [])))  # Pass list directly here
+            result += (
+                f"- {sec.get('courseTitle')} ({sec.get('courseReferenceNumber')}): {days} "
+                f"{sec.get('start')}-{sec.get('end')} in {sec.get('building')} {sec.get('room')}, "
+                f"{sec.get('seatsAvailable')} seats available. Email: {sec.get('email')}\n"
+            )
         return result
-        
     except FileNotFoundError as e:
         return f"Error: {str(e)}. Please check if your major is supported or try a different spelling."
 
-# Example usage
 if __name__ == "__main__":
-    # Test with a sample query
-    user_input = "i am a second year student in computer science spring semester i need help signing up for fall semester"
-    result = process_user_query(user_input)
-    print(result)
+    live_schedule = []
+    subject_json_folder = "./subject_jsons"
 
-    
+    for filename in os.listdir(subject_json_folder):
+        if filename.endswith(".json"):
+            with open(os.path.join(subject_json_folder, filename), "r") as f:
+                try:
+                    data = json.load(f)
+                    live_schedule.extend(data)
+                except json.JSONDecodeError:
+                    print(f"Warning: Failed to load {filename}")
+
+    print("Welcome to the USF Course Assistant! Type 'quit' to exit.")
+    while True:
+        user_input = input("\nYou: ").strip()
+        if user_input.lower() == 'quit':
+            print("Goodbye!")
+            break
+        if not user_input:
+            continue
+        result = process_user_query(user_input, live_schedule)
+        print("\nAssistant:", result)
